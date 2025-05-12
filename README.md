@@ -27,6 +27,8 @@ Instrumenta Keys is a **PowerShell script** and does not require administrative 
 3. *Optional:* Open `shortcuts.csv` and customize your shortcuts. Instructions and a full list of available macros in Instrumenta can be found [here](https://github.com/iappyx/Instrumenta-Keys/blob/main/instrumenta_macros.md)
 5. Run the binary. It will automatically **minimize to the system tray** after a few seconds. Enjoy your shortcuts!
 6. To open it again, **click the Instrumenta Keys icon** in the system tray. If you click the icon again it will hide again.
+
+Note: A security notice may appear when running the binary, please refer to [these](https://support.microsoft.com/en-gb/topic/a-potentially-dangerous-macro-has-been-blocked-0952faa0-37e7-4316-b61d-5b5ed6024216) instructions from Microsoft to unblock Instrumenta Keys: (1) Open Windows File Explorer and go to the folder where you saved the file; (2) Right-click the file and choose Properties from the context menu; (3) At the bottom of the General tab, select the Unblock checkbox and select OK.
    
 ## How to Build from Source
 Building your own Instrumenta Keys is very simple:
