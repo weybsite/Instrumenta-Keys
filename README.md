@@ -1,2 +1,37 @@
-# Instrumenta-Keys
-Keyboard Shortcut Companion to Instrumenta
+# Instrumenta Keys
+Instrumenta Keys is a **keyboard shortcut companion** for [Instrumenta](https://github.com/iappyx/Instrumenta/), bringing **customizable keyboard shortcuts** to Instrumenta features. Since **VBA lacks native keyboard shortcut support**, Instrumenta Keys—written in **Microsoft PowerShell**—runs independently alongside Instrumenta, enabling users to **assign shortcuts via a simple CSV file**.
+
+[@iappyx](https://github.com/iappyx)
+
+## Features
+- **Fully configurable:** Easily customize shortcuts in the CSV file to match your workflow.
+- **Runs independently:** Instrumenta Keys works alongside Instrumenta without modifying its core functionality.
+
+## Experimental Notice
+Instrumenta Keys is **highly experimental** and is licensed under the **MIT license**. You may freely use, modify, and distribute it, but **use at your own risk**. If you integrate this code into your own project—whether for **personal or commercial use**—please provide proper attribution in line with the **MIT license requirements**.
+
+As stated in the license: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Platform Support
+Instrumenta Keys currently supports **Windows only**.  
+An **AppleScript version** is under exploration.
+
+## Installation
+Instrumenta Keys is a **PowerShell script** and does not require administrative rights for installation on most enterprise systems.
+
+### Windows Installation
+1. **Download the binary:** [Instrumenta Keys.exe](https://github.com/iappyx/Instrumenta-Keys/raw/main/bin/Instrumenta%20Keys.exe)
+2. **Download the shortcut configuration file:** [shortcuts.csv](https://github.com/iappyx/Instrumenta-Keys/raw/main/bin/shortcuts.csv)
+3. *Optional:* Open `shortcuts.csv` and customize your shortcuts. A full list of available macros will be published here.
+
+## How to Build from Source
+Building your own Instrumenta Keys is very simple:
+
+### Requirements
+- **Microsoft PowerShell**
+- **PS2EXE module** (PowerShell-to-EXE converter)
+
+### Steps
+1. Locate the source code in `\src\src.ps1`
+2. Run the build script in an elevated PowerShell window: `.\build.ps1`
+3. The executable will be generated in `\bin\Instrumenta Keys.exe`
