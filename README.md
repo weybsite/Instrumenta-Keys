@@ -24,9 +24,8 @@ Instrumenta Keys is a **PowerShell script** and does not require administrative 
 ### Windows Installation
 1. **Download the binary:** [Instrumenta Keys.exe](https://github.com/iappyx/Instrumenta-Keys/raw/main/bin/Instrumenta%20Keys.exe)
 2. **Download the shortcut configuration file:** [shortcuts.csv](https://github.com/iappyx/Instrumenta-Keys/raw/main/bin/shortcuts.csv)
-3. *Optional:* Open `shortcuts.csv` and customize your shortcuts.
-4. A full list of available macros in Instrumenta can be found [here](https://github.com/iappyx/Instrumenta-Keys/blob/main/instrumenta_macros.md)
-5. Run the binary, and it will automatically **minimize to the system tray** after a few seconds.
+3. *Optional:* Open `shortcuts.csv` and customize your shortcuts. Instructions and a full list of available macros in Instrumenta can be found [here](https://github.com/iappyx/Instrumenta-Keys/blob/main/instrumenta_macros.md)
+5. Run the binary. It will automatically **minimize to the system tray** after a few seconds. Enjoy your shortcuts!
 6. To open it again, **click the Instrumenta Keys icon** in the system tray. If you click the icon again it will hide again.
    
 ## How to Build from Source
