@@ -1,5 +1,5 @@
 # Instrumenta Keys
-Instrumenta Keys is a **keyboard shortcut companion** for [Instrumenta](https://github.com/iappyx/Instrumenta/), bringing **customizable keyboard shortcuts** to Instrumenta features. Since **VBA lacks native keyboard shortcut support**, Instrumenta Keys—written in **Microsoft PowerShell**—runs independently alongside Instrumenta, enabling users to **assign shortcuts via a simple CSV file**.
+Instrumenta Keys is a **keyboard shortcut companion** for [Instrumenta](https://github.com/iappyx/Instrumenta/), bringing **customizable keyboard shortcuts** to Instrumenta features. Since **VBA for PowerPoint lacks native keyboard shortcut support**, Instrumenta Keys—written in **Microsoft PowerShell**—runs independently alongside Instrumenta, enabling users to **assign shortcuts via a simple CSV file**.
 
 [@iappyx](https://github.com/iappyx)
 
@@ -12,6 +12,8 @@ Instrumenta Keys is **highly experimental** and is licensed under the **MIT lice
 
 As stated in the license: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+![image](https://github.com/user-attachments/assets/2962b007-77b6-4142-9c36-f9ae8886bae1)
+
 ## Platform Support
 Instrumenta Keys currently supports **Windows only**.  
 An **AppleScript version** is under exploration.
@@ -23,7 +25,9 @@ Instrumenta Keys is a **PowerShell script** and does not require administrative 
 1. **Download the binary:** [Instrumenta Keys.exe](https://github.com/iappyx/Instrumenta-Keys/raw/main/bin/Instrumenta%20Keys.exe)
 2. **Download the shortcut configuration file:** [shortcuts.csv](https://github.com/iappyx/Instrumenta-Keys/raw/main/bin/shortcuts.csv)
 3. *Optional:* Open `shortcuts.csv` and customize your shortcuts. A full list of available macros will be published here.
-
+4. Run the binary, and it will automatically **minimize to the system tray** after a few seconds.
+5. To open it again, **click the Instrumenta Keys icon** in the system tray. If you click the icon again it will hide again.
+   
 ## How to Build from Source
 Building your own Instrumenta Keys is very simple:
 
