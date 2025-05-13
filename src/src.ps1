@@ -55,7 +55,7 @@ $keyMap = @{
     "Right" = 0x27
 }
 
-$instrumentaKeysVersion = "0.11"
+$instrumentaKeysVersion = "0.12"
 
 Write-Host "██╗███╗   ██╗███████╗████████╗██████╗ ██╗   ██╗███╗   ███╗███████╗███╗   ██╗████████╗ █████╗ "
 Write-Host "██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║   ██║████╗ ████║██╔════╝████╗  ██║╚══██╔══╝██╔══██╗"
@@ -160,26 +160,22 @@ function IsPowerPointActive {
 }
 
 function ConnectToPowerpoint {
- try {
-$ppt = [System.Runtime.Interopservices.Marshal]::GetActiveObject("PowerPoint.Application")
-} catch {
-Write-Host "Notice: No running instance of PPT found, trying to create new one."
-$ppt = New-Object -ComObject "Powerpoint.Application"
-}
-return $ppt
+    try {
+        return [System.Runtime.Interopservices.Marshal]::GetActiveObject("PowerPoint.Application")
+    } catch {
+        return $null
+    }
 }
 
 $ppt = ConnectToPowerpoint
 
 Write-Host ""
-Write-Host "Listening for shortcuts, and hiding this window to the systray in five seconds" -NoNewline
-for ($i = 1; $i -le 5; $i++) {
+Write-Host "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Listening for shortcuts, and hiding this window to the systray in three seconds" -NoNewline
+for ($i = 1; $i -le 3; $i++) {
     Start-Sleep -Seconds 1
     Write-Host "." -NoNewline
 }
-Write-Host "" 
-
-
+Write-Host ""
 
 [void] [WindowHelper]::ShowWindow($global:hWnd, 0)
 
@@ -191,8 +187,6 @@ $trayIcon.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($exePath)
 $trayIcon.Text = "Instrumenta Keys is running (click to view/hide)"
 $trayIcon.Visible = $true
 
-
-
 $trayIcon.Add_MouseClick({
     $windowState = [WindowHelper]::ShowWindow($global:hWnd, 0)
     
@@ -203,14 +197,49 @@ $trayIcon.Add_MouseClick({
     }
 })
 
-# Listen for shortcuts using Windows API
-while ($true) {
+$waiting = $true
+$inPresentationMode = $false
 
-$testIfActive = IsPowerPointActive
-if ($testIfActive -eq "not-active") { 
-	Start-Sleep -Milliseconds 1000
+Write-Host "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Waiting for PowerPoint instance."
+
+while ($true) {
+    $ppt = ConnectToPowerpoint
+
+    if ($null -eq $ppt) {
+        if (-not $waiting) { 
+            Write-Host "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Waiting for PowerPoint instance."
+            $waiting = $true
+        }
+        Start-Sleep -Milliseconds 5000 
         continue
     }
+
+    if ($waiting) { 
+        Write-Host "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - PowerPoint instance found. Accepting shortcuts when PowerPoint window is active."
+        $waiting = $false
+    }
+
+    $testIfActive = IsPowerPointActive
+    if ($testIfActive -eq "not-active") { 
+        Start-Sleep -Milliseconds 1000
+        continue
+    }
+
+    if ($ppt.SlideShowWindows.Count -gt 0) {
+        if (-not $inPresentationMode) {
+            Write-Host "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Presentation Mode detected. Shortcuts are temporarily disabled."
+            $inPresentationMode = $true  # Mark that we're in presentation mode
+        }
+        Start-Sleep -Milliseconds 1000
+        continue
+    } else {
+        if ($inPresentationMode) {
+            Write-Host "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Exited Presentation Mode. Shortcuts are active again."
+            $inPresentationMode = $false  # Reset flag when exiting presentation mode
+        }
+    }
+
+    $timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
 
     foreach ($virtualKeyCombo in $shortcuts.Keys) {
         $pressed = $true
@@ -227,12 +256,16 @@ if ($testIfActive -eq "not-active") {
         if ($pressed) { 
             if ($shortcuts.ContainsKey($virtualKeyCombo)) {
                 $macroName = $shortcuts[$virtualKeyCombo]
-                Write-Host "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Detected shortcut $($friendlyShortcuts[$virtualKeyCombo]), executing macro $macroName in PowerPoint"
-		$ppt = ConnectToPowerpoint
-                $ppt.Run($macroName)
+                Write-Host "$timestamp - Detected shortcut $($friendlyShortcuts[$virtualKeyCombo]), executing macro $macroName"
+                try {
+                    $ppt.Run($macroName)
+                } catch {
+                    Write-Host "$timestamp - Error: Failed execution of $macroName with message $_ "
+                }
+
                 Start-Sleep -Milliseconds 300
             } else {
-                Write-Host "Error: Macro not found for shortcut $($friendlyShortcuts[$virtualKeyCombo])."
+                Write-Host "$timestamp - Error: Macro not found for shortcut $($friendlyShortcuts[$virtualKeyCombo])."
             }
         }
     }
@@ -240,5 +273,5 @@ if ($testIfActive -eq "not-active") {
     Start-Sleep -Milliseconds 100
 }
 
-Write-Output "Execution complete. Press Enter to exit..."
+Write-Output "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') - Execution complete. Press Enter to exit..."
 Read-Host
