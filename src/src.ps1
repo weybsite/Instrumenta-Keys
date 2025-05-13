@@ -42,6 +42,7 @@ public class WindowHelper {
 }
 "@ -Language CSharp
 
+$global:hWnd = [WindowHelper]::GetForegroundWindow()
 
 $keyMap = @{
     "Ctrl"  = 0x11
@@ -54,6 +55,7 @@ $keyMap = @{
     "Right" = 0x27
 }
 
+$instrumentaKeysVersion = "0.11"
 
 Write-Host "██╗███╗   ██╗███████╗████████╗██████╗ ██╗   ██╗███╗   ███╗███████╗███╗   ██╗████████╗ █████╗ "
 Write-Host "██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║   ██║████╗ ████║██╔════╝████╗  ██║╚══██╔══╝██╔══██╗"
@@ -63,7 +65,7 @@ Write-Host "██║██║ ╚████║███████║   █�
 Write-Host "╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝"
 Write-Host "██╗  ██╗███████╗██╗   ██╗███████╗                                                            "
 Write-Host "██║ ██╔╝██╔════╝╚██╗ ██╔╝██╔════╝                                                            "
-Write-Host "█████╔╝ █████╗   ╚████╔╝ ███████╗      Keyboard Shortcut Companion (v.0.1)                   "
+Write-Host "█████╔╝ █████╗   ╚████╔╝ ███████╗      Keyboard Shortcut Companion (v. $instrumentaKeysVersion)"
 Write-Host "██╔═██╗ ██╔══╝    ╚██╔╝  ╚════██║                                                            "
 Write-Host "██║  ██╗███████╗   ██║   ███████║                                                            "
 Write-Host "╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝                                                            "
@@ -178,8 +180,8 @@ for ($i = 1; $i -le 5; $i++) {
 Write-Host "" 
 
 
-$hWnd = [WindowHelper]::GetForegroundWindow()
-[void] [WindowHelper]::ShowWindow($hWnd, 0)
+
+[void] [WindowHelper]::ShowWindow($global:hWnd, 0)
 
 Add-Type -AssemblyName System.Windows.Forms
 
@@ -189,7 +191,7 @@ $trayIcon.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($exePath)
 $trayIcon.Text = "Instrumenta Keys is running (click to view/hide)"
 $trayIcon.Visible = $true
 
-$global:hWnd = [WindowHelper]::GetForegroundWindow()
+
 
 $trayIcon.Add_MouseClick({
     $windowState = [WindowHelper]::ShowWindow($global:hWnd, 0)
