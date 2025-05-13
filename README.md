@@ -6,6 +6,7 @@ Instrumenta Keys is a **keyboard shortcut companion** for [Instrumenta](https://
 ## Features
 - **Fully configurable:** Easily customize shortcuts in the CSV file to match your workflow.
 - **Runs independently:** Instrumenta Keys works alongside Instrumenta without modifying its core functionality.
+- **Compatible with other VBA projects:** Designed to integrate with any VBA-based automation, not just Instrumenta.
 
 ## Experimental Notice
 Instrumenta Keys is **highly experimental** and is licensed under the **MIT license**. You may freely use, modify, and distribute it, but **use at your own risk**. If you integrate this code into your own project—whether for **personal or commercial use**—please provide proper attribution in line with the **MIT license requirements**.
